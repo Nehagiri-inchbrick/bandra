@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bandra Bay by Godrej Properties</title>
+  <meta name="description" content="Bandra Bay — sea-facing residences by Godrej Properties on Mumbai's waterfront. 4-bed sea suites and a sea mansion. Request a private preview.">
+  <link rel="preload" as="image" href="assets/banner.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #121820;
+      --sea: #182230;
+      --gold: #e4c98a;
+      --gold-deep: #9a7340;
+      --ivory: #f4efe6;
+      --paper: #fbf8f3;
+      --line: rgba(154, 115, 64, 0.22);
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: Outfit, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 400;
+      line-height: 1.5;
+    }
+    img { max-width: 100%; display: block; }
+    button, input, select { font-family: inherit; }
+    a { color: inherit; }
+
+    .nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 32px;
+    }
+    .nav.solid {
+      position: fixed;
+      background: rgba(14, 18, 26, 0.92);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      line-height: 0;
+    }
+    .brand img {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.88);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .pill {
+      border: 1px solid rgba(228, 201, 138, 0.75);
+      color: var(--gold) !important;
+      border-radius: 999px;
+      padding: 8px 16px;
+    }
+    .pill:hover { background: rgba(228, 201, 138, 0.12); }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      color: #fff;
+    }
+    .hero-media {
+      position: absolute;
+      inset: -4%;
+      background:
+        #1a2030 url("assets/banner.png") center 42% / cover no-repeat;
+      animation: drift 28s ease-in-out infinite alternate;
+    }
+    .hero-shade {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(10, 16, 28, 0.46) 0%, rgba(10, 16, 28, 0.16) 34%, rgba(10, 16, 28, 0) 58%, rgba(10, 16, 28, 0.28) 100%),
+        linear-gradient(180deg, rgba(10, 16, 28, 0.34) 0%, transparent 18%, transparent 68%, rgba(10, 16, 28, 0.38) 100%);
+    }
+    @keyframes drift {
+      from { transform: scale(1) translate3d(0, 0, 0); }
+      to { transform: scale(1.08) translate3d(-1.5%, -1%, 0); }
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 118px 0 54px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(300px, 420px);
+      gap: 42px;
+      align-items: center;
+    }
+    .kicker {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 16px;
+      color: var(--gold);
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+    }
+    .kicker::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero-copy { max-width: 640px; }
+    .hero-copy .kicker::after,
+    .card .kicker::after {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .card .kicker { justify-content: center; }
+    .hero h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(4.4rem, 6.8vw, 6.6rem);
+      line-height: 0.84;
+      letter-spacing: -0.03em;
+      text-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+    }
+    .hero h1 em {
+      display: block;
+      padding-left: 0.12em;
+      font-style: italic;
+      font-weight: 500;
+      color: #e7c56a;
+      text-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+    }
+    .lede {
+      margin: 18px 0 0;
+      max-width: 36ch;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1.35rem, 1.8vw, 1.7rem);
+      font-weight: 500;
+      line-height: 1.15;
+      text-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    }
+    .hero-copy p.sub {
+      margin: 12px 0 0;
+      max-width: 42ch;
+      color: rgba(255, 255, 255, 0.92);
+      font-weight: 300;
+      font-size: 0.98rem;
+      line-height: 1.45;
+      text-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+      padding: 0;
+      list-style: none;
+    }
+    .chips li {
+      border: 1px solid rgba(255, 255, 255, 0.42);
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 0.8rem;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    }
+    .rera {
+      margin: 16px 0 0;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      color: rgba(255, 255, 255, 0.62);
+    }
+
+    .card {
+      color-scheme: dark;
+      position: relative;
+      padding: 26px 22px 18px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(22, 20, 18, 0.9), rgba(12, 12, 14, 0.84));
+      border: 1px solid rgba(228, 201, 138, 0.38);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(16px) saturate(1.2);
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 28px;
+      right: 28px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #fff1c9, transparent);
+    }
+    .card h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 2.35rem;
+      line-height: 1;
+    }
+    .form-note {
+      margin: 8px 0 16px;
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 0.92rem;
+      font-weight: 300;
+    }
+    .fields { display: grid; gap: 10px; }
+    .card label {
+      display: grid;
+      gap: 6px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .card input,
+    .card select {
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      font-size: 16px;
+    }
+    .card input::placeholder { color: rgba(255, 255, 255, 0.38); }
+    .card input:focus,
+    .card select:focus {
+      outline: 2px solid var(--gold);
+      outline-offset: 1px;
+      border-color: transparent;
+    }
+    .err {
+      min-height: 0;
+      margin: 0;
+      color: #ffb4b4;
+      font-size: 0.75rem;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .err:empty { display: none; }
+    .submit {
+      margin-top: 6px;
+      width: 100%;
+      border: 0;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 14px 18px;
+      background: linear-gradient(100deg, #fff1c9, #e4c07a 45%, #c9964a);
+      color: #24180a;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      box-shadow: 0 8px 24px rgba(201, 150, 74, 0.35);
+    }
+    .submit:hover { filter: brightness(1.06); }
+    .fine {
+      margin: 10px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 0.72rem;
+    }
+    .lock {
+      width: 9px;
+      height: 7px;
+      margin-top: 4px;
+      border: 1.4px solid rgba(255, 255, 255, 0.62);
+      border-radius: 1px;
+      position: relative;
+      flex: 0 0 auto;
+    }
+    .lock::before {
+      content: "";
+      position: absolute;
+      left: 1px;
+      top: -6px;
+      width: 5px;
+      height: 5px;
+      border: 1.4px solid rgba(255, 255, 255, 0.62);
+      border-bottom: 0;
+      border-radius: 6px 6px 0 0;
+    }
+    .thanks {
+      min-height: 320px;
+      display: grid;
+      align-content: center;
+      gap: 8px;
+    }
+    .thanks p { margin: 0; color: rgba(255, 255, 255, 0.82); }
+    .thanks[hidden] { display: none; }
+
+    .block {
+      width: min(1240px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 78px 0 10px;
+    }
+    .head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 22px;
+    }
+    .idx {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--gold-deep);
+      letter-spacing: 0.14em;
+    }
+    .head h2, .homes h2, .road h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(2.4rem, 4vw, 3.7rem);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+    }
+    .head p, .intro {
+      margin: 8px 0 0;
+      max-width: 46ch;
+      color: #4d463c;
+      font-weight: 300;
+    }
+    .kicker.dark { color: var(--gold-deep); margin-bottom: 8px; }
+    .kicker.dark::before { background: var(--gold-deep); }
+
+    .mosaic {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr 1fr;
+      grid-template-rows: 310px 310px;
+      gap: 14px;
+    }
+    .frame {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      border: 0;
+      overflow: hidden;
+      border-radius: 18px;
+      cursor: zoom-in;
+      background: #d9d0c3;
+      box-shadow: 0 18px 40px rgba(28, 22, 12, 0.14);
+    }
+    .frame.tall { grid-row: span 2; }
+    .frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.04);
+      transition: transform 0.8s ease;
+    }
+    .frame:hover img, .frame:focus-visible img { transform: scale(1.1); }
+    .frame:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 3px; }
+    .frame::after {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(244, 228, 190, 0.7);
+      border-radius: 12px;
+      pointer-events: none;
+    }
+    .cap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      padding: 56px 18px 16px;
+      background: linear-gradient(transparent, rgba(8, 10, 16, 0.78));
+      color: #fff;
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      line-height: 1;
+      text-align: left;
+    }
+    .hint {
+      margin: 12px 0 0;
+      color: #8a8174;
+      font-size: 0.8rem;
+    }
+
+    .road {
+      position: relative;
+      margin-top: 34px;
+      min-height: 540px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      text-align: center;
+      background: #243044 url("assets/coastal.jpg") center 46% / cover no-repeat;
+    }
+    .road .veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10, 14, 20, 0.12), rgba(10, 14, 20, 0.5));
+    }
+    .road-copy {
+      position: relative;
+      z-index: 1;
+      padding: 40px 20px;
+    }
+    .road h2 { max-width: 14ch; margin: 0 auto; }
+    .road p {
+      margin: 14px auto 0;
+      max-width: 46ch;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .homes { padding-bottom: 72px; }
+    .homes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 8px;
+    }
+    .home {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(30, 24, 12, 0.08);
+      display: flex;
+      flex-direction: column;
+    }
+    .home .shot {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+    }
+    .home .shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+    .home:hover .shot img { transform: scale(1.06); }
+    .home .shot span {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(16, 18, 24, 0.72);
+      color: var(--gold);
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .home .body { padding: 18px 18px 20px; display: grid; gap: 6px; }
+    .home h3 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: 1.85rem;
+      font-weight: 500;
+      line-height: 1;
+    }
+    .area { margin: 0; color: #5e564c; font-size: 0.92rem; }
+    .price {
+      margin: 4px 0 0;
+      font-family: var(--serif);
+      font-size: 2.15rem;
+      color: var(--gold-deep);
+      line-height: 1;
+    }
+    .plan { margin: 0; color: #8a8174; font-size: 0.8rem; }
+    .pick {
+      justify-self: start;
+      margin-top: 8px;
+      border: 0;
+      background: none;
+      padding: 0;
+      cursor: pointer;
+      color: var(--ink);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      font-weight: 600;
+      border-bottom: 1px solid var(--gold-deep);
+    }
+    .note {
+      margin: 18px 0 0;
+      color: #8a8174;
+      font-size: 0.78rem;
+      max-width: 90ch;
+    }
+    .credits {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: #4d463c;
+      font-size: 0.92rem;
+    }
+
+    footer {
+      background: #10151c;
+      color: rgba(255, 255, 255, 0.7);
+      padding: 36px 22px 28px;
+    }
+    .foot {
+      width: min(1240px, 100%);
+      margin: 0 auto;
+      display: grid;
+      gap: 10px;
+    }
+    .foot strong {
+      color: #fff;
+      letter-spacing: 0.22em;
+      font-weight: 500;
+      font-size: 0.78rem;
+    }
+    .foot p { margin: 0; font-size: 0.75rem; font-weight: 300; max-width: 95ch; }
+    .foot a { color: var(--gold); }
+
+    #enquire-pop {
+      width: min(440px, calc(100vw - 28px));
+      max-height: calc(100vh - 28px);
+      margin: auto;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      overflow: visible;
+    }
+    #enquire-pop::backdrop { background: rgba(6, 8, 12, 0.78); }
+    #enquire-pop .card { margin: 0; }
+    #enquire-pop .pop-x {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 2;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(228, 201, 138, 0.5);
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      cursor: pointer;
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+    #enquire-pop .pop-x:hover { background: rgba(255, 255, 255, 0.18); }
+    dialog {
+      width: min(1080px, 94vw);
+      border: 0;
+      padding: 0;
+      background: transparent;
+    }
+    dialog::backdrop { background: rgba(6, 8, 12, 0.9); }
+    dialog img {
+      width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 14px;
+      background: #111;
+    }
+    dialog .close {
+      position: absolute;
+      top: -8px;
+      right: 0;
+      border: 0;
+      background: #fff;
+      color: #111;
+      border-radius: 999px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    dialog figcaption {
+      color: #fff;
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      padding: 10px 2px 0;
+    }
+    .light { position: relative; margin: 0; }
+
+    @media (max-width: 900px) {
+      .nav { padding: 16px 16px; }
+      .nav-links a:not(.pill) { display: none; }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        width: min(640px, calc(100% - 32px));
+        padding: 96px 0 36px;
+        gap: 28px;
+      }
+      .hero h1 { font-size: clamp(3.6rem, 16vw, 5rem); }
+      .mosaic {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 12px;
+        padding-bottom: 6px;
+      }
+      .frame {
+        flex: 0 0 86%;
+        height: 68vh;
+        scroll-snap-align: center;
+      }
+      .homes-grid { grid-template-columns: 1fr; }
+      .road { min-height: 420px; }
+      .block { padding-top: 56px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-media { animation: none; }
+      html { scroll-behavior: auto; }
+      .frame img, .home .shot img { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav" id="nav">
+    <a class="brand" href="#top"><img src="assets/inchbrick-logo.png" alt="Inchbrick"></a>
+    <nav class="nav-links" aria-label="Page">
+      <a href="#waterfront">Waterfront</a>
+      <a href="#residences">Residences</a>
+      <a class="pill" href="#enquiry">Enquire</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="Bandra Bay">
+      <div class="hero-media" role="img" aria-label="Sunset terrace looking across the bay to the Mumbai skyline and the sea link"></div>
+      <div class="hero-shade"></div>
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="kicker">Mumbai waterfront</p>
+          <h1>Bandra<br><em>Bay</em></h1>
+          <p class="lede">The shoreline that changes everything.</p>
+          <p class="sub">140 acres of luxury by the water. Sea-facing homes, a promenade, and a front row to the bay — before the city catches up.</p>
+          <ul class="chips">
+            <li>4-bed sea suites</li>
+            <li>Sea mansion</li>
+            <li>From ₹34 Cr++</li>
+          </ul>
+          <p class="rera">MahaRERA PR1181012601775</p>
+        </div>
+
+        <div class="card" id="enquiry">
+          <form id="enquiry-form" novalidate>
+            <p class="kicker">Private enquiry</p>
+            <h2>Request a preview</h2>
+            <p class="form-note">Leave your details. A project specialist will call you back.</p>
+            <div class="fields">
+              <label>Full name
+                <input name="name" autocomplete="name" placeholder="Your name" required>
+              </label>
+              <p class="err" id="err-name"></p>
+              <label>Mobile
+                <input name="mobile" inputmode="numeric" autocomplete="tel" placeholder="10-digit mobile" required>
+              </label>
+              <p class="err" id="err-mobile"></p>
+              <label>Email
+                <input name="email" type="email" autocomplete="email" placeholder="you@email.com" required>
+              </label>
+              <p class="err" id="err-email"></p>
+              <label>Interested in
+                <select name="home" required>
+                  <option value="">Select a residence</option>
+                  <option value="grand">Grand 4 Bed Sea Suite — ₹34 Cr++</option>
+                  <option value="majestic">Majestic 4 Bed Sea Suite — ₹40 Cr++</option>
+                  <option value="imperial">Imperial 4 Bed Sea Mansion — ₹50 Cr++</option>
+                  <option value="unsure">Help me choose</option>
+                </select>
+              </label>
+              <p class="err" id="err-home"></p>
+            </div>
+            <button class="submit" type="submit">Request a call back</button>
+            <p class="fine"><span class="lock" aria-hidden="true"></span>No payment is taken on this page.</p>
+          </form>
+          <div class="thanks" id="thanks" hidden>
+            <p class="kicker">Enquiry noted</p>
+            <h2>Thank you.</h2>
+            <p id="thanks-copy"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="waterfront">
+      <div class="head">
+        <div>
+          <p class="kicker dark"><span class="idx">01</span> &nbsp; The waterfront</p>
+          <h2>Seen from the shore.</h2>
+          <p>Photographs from the project deck — the bay, the link, and life beside the water.</p>
+        </div>
+      </div>
+      <div class="mosaic">
+        <button class="frame tall" type="button">
+          <img src="assets/living.jpg" alt="Couple on a sea-facing deck with the skyline and sea link beyond">
+          <span class="cap">Sea-facing living</span>
+        </button>
+        <button class="frame" type="button">
+          <img src="assets/yachts.jpg" alt="White yachts moored on calm water at sunset">
+          <span class="cap">The yacht line</span>
+        </button>
+        <button class="frame" type="button">
+          <img src="assets/sealink.jpg" alt="Bandra-Worli Sea Link at golden hour over the water">
+          <span class="cap">Sea Link</span>
+        </button>
+        <button class="frame" type="button">
+          <img src="assets/wellness.jpg" alt="Woman floating in a softly lit indoor wellness pool">
+          <span class="cap">Daily ritual</span>
+        </button>
+        <button class="frame" type="button">
+          <img src="assets/arrival.jpg" alt="Doorman holding a car door at a private residential arrival">
+          <span class="cap">Private arrival</span>
+        </button>
+      </div>
+      <p class="hint">Click anywhere on the page to send an enquiry.</p>
+    </section>
+
+    <section class="road" aria-label="Connectivity">
+      <div class="veil"></div>
+      <div class="road-copy">
+        <p class="kicker">Every road</p>
+        <h2>Every road in Mumbai now leads here.</h2>
+        <p>The Coastal Road, Bandra–Worli Sea Link, Western Express Highway, and the upcoming Worli–Sewri connector converge at this shore.</p>
+      </div>
+    </section>
+
+    <section class="block homes" id="residences">
+      <div class="head">
+        <div>
+          <p class="kicker dark"><span class="idx">02</span> &nbsp; Residences</p>
+          <h2>Three ways to face the bay.</h2>
+          <p>Sea-facing living, expansive decks, private suites, and cross ventilation. Launch prices from the project deck.</p>
+        </div>
+      </div>
+      <div class="homes-grid">
+        <article class="home">
+          <div class="shot">
+            <img src="assets/pool.jpg" alt="Indoor pool looking out to the sea link at dusk">
+            <span>Core A</span>
+          </div>
+          <div class="body">
+            <h3>Grand 4 Bed Sea Suite</h3>
+            <p class="area">2,900+ sq.ft.</p>
+            <p class="price">₹34 Cr++</p>
+            <p class="plan">Plan area 2,864 sq.ft.</p>
+            <button class="pick" type="button" data-pick="grand">Enquire about this home</button>
+          </div>
+        </article>
+        <article class="home">
+          <div class="shot">
+            <img src="assets/lobby.jpg" alt="Resident walking toward a private marble lobby door">
+            <span>Core B</span>
+          </div>
+          <div class="body">
+            <h3>Majestic 4 Bed Sea Suite</h3>
+            <p class="area">3,500+ sq.ft.</p>
+            <p class="price">₹40 Cr++</p>
+            <p class="plan">Plan area 3,520 sq.ft.</p>
+            <button class="pick" type="button" data-pick="majestic">Enquire about this home</button>
+          </div>
+        </article>
+        <article class="home">
+          <div class="shot">
+            <img src="assets/living.jpg" alt="Living room opening onto a deck above the bay">
+            <span>Core C</span>
+          </div>
+          <div class="body">
+            <h3>Imperial 4 Bed Sea Mansion</h3>
+            <p class="area">4,100+ sq.ft.</p>
+            <p class="price">₹50 Cr++</p>
+            <p class="plan">Plan area 4,106 sq.ft.</p>
+            <button class="pick" type="button" data-pick="imperial">Enquire about this home</button>
+          </div>
+        </article>
+      </div>
+      <p class="note">Indicative agreement value for the area band. Excludes stamp duty, registration, GST and other charges. Furniture in views is illustrative. “Sea Suite” and “Sea Mansion” are campaign names. Prices and areas as published in the project deck.</p>
+      <p class="credits">Architecture by Hafeez Contractor. Landscape by Landinc. Interiors by Aston Design. Along the shore: mini golf, a pet park, sports zone, creek garden, indoor pool and indoor court.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="foot">
+      <strong>BANDRA BAY · GODREJ PROPERTIES</strong>
+      <p>This is not an address. It is an arrival. Bandra Bay will only happen once.</p>
+      <p>Artist’s impressions and photographs from the project deck, for representation. Views may vary and are not warranted. Infrastructure is proposed by the authorities; timing is not assured. MahaRERA PR1181012601775 · <a href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener">maharera.maharashtra.gov.in</a></p>
+    </div>
+  </footer>
+
+  <dialog id="enquire-pop" aria-labelledby="pop-title">
+    <div class="card">
+      <button class="pop-x" type="button" aria-label="Close enquiry form">×</button>
+      <form id="pop-form" novalidate>
+        <p class="kicker">Private enquiry</p>
+        <h2 id="pop-title">Request a preview</h2>
+        <p class="form-note">Leave your details. A project specialist will call you back.</p>
+        <div class="fields">
+          <label>Full name
+            <input name="name" autocomplete="name" placeholder="Your name" required>
+          </label>
+          <p class="err" id="pop-err-name"></p>
+          <label>Mobile
+            <input name="mobile" inputmode="numeric" autocomplete="tel" placeholder="10-digit mobile" required>
+          </label>
+          <p class="err" id="pop-err-mobile"></p>
+          <label>Email
+            <input name="email" type="email" autocomplete="email" placeholder="you@email.com" required>
+          </label>
+          <p class="err" id="pop-err-email"></p>
+          <label>Interested in
+            <select name="home" required>
+              <option value="">Select a residence</option>
+              <option value="grand">Grand 4 Bed Sea Suite — ₹34 Cr++</option>
+              <option value="majestic">Majestic 4 Bed Sea Suite — ₹40 Cr++</option>
+              <option value="imperial">Imperial 4 Bed Sea Mansion — ₹50 Cr++</option>
+              <option value="unsure">Help me choose</option>
+            </select>
+          </label>
+          <p class="err" id="pop-err-home"></p>
+        </div>
+        <button class="submit" type="submit">Request a call back</button>
+        <p class="fine"><span class="lock" aria-hidden="true"></span>No payment is taken on this page.</p>
+      </form>
+      <div class="thanks" id="pop-thanks" hidden>
+        <p class="kicker">Enquiry noted</p>
+        <h2>Thank you.</h2>
+        <p id="pop-thanks-copy"></p>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="lightbox">
+    <figure class="light">
+      <button class="close" type="button">Close</button>
+      <img alt="" id="light-img">
+      <figcaption id="light-cap"></figcaption>
+    </figure>
+  </dialog>
+
+  <script>
+    const nav = document.getElementById("nav");
+    const onScroll = () => nav.classList.toggle("solid", window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    const homes = {
+      grand: "Grand 4 Bed Sea Suite",
+      majestic: "Majestic 4 Bed Sea Suite",
+      imperial: "Imperial 4 Bed Sea Mansion",
+      unsure: "a Bandra Bay residence"
+    };
+
+    function bindEnquiry(form, thanksId, copyId, errPrefix) {
+      const thanks = document.getElementById(thanksId);
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const name = form.name.value.trim();
+        const mobile = form.mobile.value.replace(/\D/g, "").replace(/^91/, "");
+        const email = form.email.value.trim();
+        const home = form.home.value;
+        let ok = true;
+
+        const setError = (field, message) => {
+          document.getElementById(errPrefix + field).textContent = message;
+        };
+        setError("name", "");
+        setError("mobile", "");
+        setError("email", "");
+        setError("home", "");
+
+        if (name.length < 2) {
+          setError("name", "Please enter your name.");
+          ok = false;
+        }
+        if (!/^[6-9]\d{9}$/.test(mobile)) {
+          setError("mobile", "Enter a 10-digit Indian mobile number.");
+          ok = false;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          setError("email", "Enter a valid email address.");
+          ok = false;
+        }
+        if (!home) {
+          setError("home", "Choose a residence.");
+          ok = false;
+        }
+        if (!ok) return;
+
+        document.getElementById(copyId).textContent =
+          name.split(" ")[0] + ", your interest in " + homes[home] + " is noted. Expect a call on " + mobile + ".";
+        form.hidden = true;
+        thanks.hidden = false;
+      });
+    }
+
+    bindEnquiry(document.getElementById("enquiry-form"), "thanks", "thanks-copy", "err-");
+    bindEnquiry(document.getElementById("pop-form"), "pop-thanks", "pop-thanks-copy", "pop-err-");
+
+    const enquirePop = document.getElementById("enquire-pop");
+    const popForm = document.getElementById("pop-form");
+
+    function openEnquiry(home) {
+      if (enquirePop.open) return;
+      if (home) popForm.home.value = home;
+      enquirePop.showModal();
+      if (!popForm.hidden) popForm.name.focus();
+    }
+
+    document.addEventListener("click", (event) => {
+      if (event.target.closest("#enquire-pop, #enquiry")) return;
+      const pick = event.target.closest("[data-pick]");
+      const link = event.target.closest("a[href^='#']");
+      if (link) event.preventDefault();
+      openEnquiry(pick ? pick.dataset.pick : "");
+    });
+
+    enquirePop.querySelector(".pop-x").addEventListener("click", () => enquirePop.close());
+    enquirePop.addEventListener("click", (event) => {
+      if (event.target === enquirePop) enquirePop.close();
+    });
+  </script>
+</body>
+</html>
