@@ -241,6 +241,25 @@
       font-size: 0.92rem;
       font-weight: 300;
     }
+    .form-price {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin: 4px 0 10px;
+    }
+    .form-price-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(228, 201, 138, 0.72);
+    }
+    .form-price-value {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #e7c56a;
+      line-height: 1;
+    }
     .fields { display: grid; gap: 10px; }
     .card label {
       display: grid;
@@ -639,13 +658,22 @@
       .hero h1 {
         font-size: clamp(2.5rem, 11vw, 3.8rem);
         line-height: 0.9;
+        white-space: nowrap;
       }
+      .hero h1 br { display: none; }
+      .hero h1 em { display: inline; padding-left: 0.08em; }
       .hero-copy {
         max-width: none;
       }
       .hero-copy .sub,
-      .hero-copy .rera,
+      .hero-copy .rera { display: none; }
       .chips { display: none; }
+      .hero-price-mobile {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 14px;
+      }
       .card {
         margin-top: 0;
       }
@@ -665,6 +693,7 @@
       .road { min-height: 420px; }
       .block { padding-top: 56px; }
     }
+    .hero-price-mobile { display: none; }
     @media (prefers-reduced-motion: reduce) {
       .hero-media { animation: none; }
       html { scroll-behavior: auto; }
@@ -691,6 +720,11 @@
           <p class="kicker">Mumbai waterfront</p>
           <h1>Bandra<br><em>Bay</em></h1>
           <p class="lede">The shoreline that changes everything.</p>
+          <div class="hero-price-mobile">
+            <span style="display:block;width:28px;height:1px;background:var(--gold);flex:0 0 auto;"></span>
+            <span style="font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);">Starting from</span>
+            <span style="font-family:var(--serif);font-size:1.55rem;font-weight:600;color:#e7c56a;line-height:1;text-shadow:0 4px 14px rgba(0,0,0,0.5);">₹34 Cr++</span>
+          </div>
           <p class="sub">140 acres of luxury by the water. Sea-facing homes, a promenade, and a front row to the bay — before the city catches up.</p>
           <ul class="chips">
             <li>4-bed sea suites</li>
@@ -704,6 +738,10 @@
           <form id="enquiry-form" novalidate>
             <p class="kicker">Private enquiry</p>
             <h2>Request a preview</h2>
+            <div class="form-price">
+              <span class="form-price-label">Starting from</span>
+              <span class="form-price-value">₹34 Cr++</span>
+            </div>
             <p class="form-note">Leave your details. A project specialist will call you back.</p>
             <div class="fields">
               <label>Full name
